@@ -1,176 +1,311 @@
-import * as React from "react"
+import React from "react";
+import { Link } from "gatsby";
+import "../global.css";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import { makeStyles } from "@mui/styles";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Grid from "@mui/material/Grid";
+import { CardMedia } from "@mui/material";
+import "react-slideshow-image/dist/styles.css";
+import { Slide } from "react-slideshow-image";
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+import { ThemeProvider } from "@mui/styles";
+import { createTheme } from "@mui/material/styles";
+const theme = createTheme({});
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
+const useStyles = makeStyles((theme) => ({
+  main: {
+    margin: "50px 0 0 0 ",
+    position: "relative",
+    background: "rgb(241, 241, 241)",
+    paddingTop: "14vh",
   },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
+  slideroverlay: {
+    background: "rgba(0, 0, 0, 0.7)",
+    position: "absolute",
+    height: "100%",
+    width: "100%",
   },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
+  carousel: {
+    color: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    height: "100%",
   },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
+  overlay: {
+    position: "absolute",
+    background: "rgba(0, 0, 0, 0.4)",
+    width: "100%",
+    height: "80vh",
   },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+  box: {
+    background:
+      "url(http://lanbrands.co.ke/wp-content/uploads/2022/03/cropped-Lan-Catalogue-best.png)",
 
-const IndexPage = () => {
+    backgroundPosition: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignContent: "space-around",
+    color: "white",
+    width: "100%",
+    height: "100%",
+    fontWeight: 300,
+  },
+  linkage: {
+    textDecoration: "none",
+    color: "white",
+  },
+
+  carouselitem: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "60vh",
+  },
+  slider: {
+    background:
+      "url(https://lanbrands.co.ke/wp-content/plugins/spicebox//inc/busicare/images/testimonial/testimonial-bg.jpg)",
+    height: "60vh",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    objectFit: "contain",
+    backgroundPosition: "bottom",
+    position: "relative",
+  },
+  categories: {
+    marginInline: "1rem",
+  },
+  boxed: {
+    marginBottom: "2rem",
+  },
+}));
+
+const Homepage = () => {
+  const classes = useStyles();
+  const images = [
+    {
+      id: 0,
+      chain: " Naivas Supermarket ",
+      description:
+        "A supermarket chain with over 80 outlets. Sells also to schools hospitals, gyms, flower farms and hotels",
+    },
+    {
+      id: 1,
+      chain: " Quickmart Supermarket ",
+      description:
+        "A supermarket chain with over 80 outlets. Sells also to schools hospitals, gyms, flower farms and hotels",
+    },
+    {
+      id: 2,
+      chain: " Ibis Hotels ",
+      description:
+        "A supermarket chain with over 40 outlets. Sells also to schools hospitals, gyms, flower farms and hotels",
+    },
+
+    {
+      id: 3,
+      chain: " Gym and Cleaning Companies ",
+      description:
+        " Sells directly to cleaning companies and gyms among others",
+    },
+  ];
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+    <ThemeProvider theme={theme}>
+      {/* image header */}
+      <Box className={classes.main}>
+        <div className={classes.overlay}></div>
+        <Box className={classes.box} sx={{ height: "80vh" }}>
+          <Button>
+            <Typography variant="h6" sx={{ color: "white", zIndex: 10 }}>
+              Lan Brands - By Alanic
+            </Typography>
+            <Typography variant="h6" sx={{ color: "white", zIndex: 10 }}>
+              Products Limited
+            </Typography>
+          </Button>
+          <Typography
+            variant="h3"
+            textAlign="center"
+            gutterBottom
+            sx={{ color: "white", zIndex: 10 }}
           >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+            Home Care &amp; Body Care
+          </Typography>
+          {/* <Box sx={{ marginBottom: "20px" }}> */}
+          <Typography
+            variant="h6"
+            textAlign="center"
+            sx={{ color: "white", zIndex: 10 }}
+          >
+            Trusted manufacturer's of home care, body care and cleaning
+          </Typography>
+          <Typography
+            variant="h6"
+            textAlign="center"
+            sx={{ color: "white", zIndex: 10, marginBottom: "15px" }}
+          >
+            We meet our clients needs and wants promptly with
+          </Typography>
+          {/* </Box> */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
+            <Link to="/shop" className={classes.linkage}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ marginRight: "5px" }}
               >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
-}
+                <Typography>Go Shopping</Typography>
+              </Button>
+            </Link>
+            <Link to="/wholesaleandTenders" className={classes.linkage}>
+              <Button variant="contained" color="secondary">
+                <Typography>Wholesale/ tender</Typography>
+              </Button>
+            </Link>
+          </Box>
+        </Box>
+      </Box>
 
-export default IndexPage
+      {/* categories */}
+      <Box className={classes.boxed}>
+        <Typography
+          textAlign="center"
+          variant="h3"
+          sx={{ background: "rgb(241, 241, 241)" }}
+        >
+          Our Categories
+        </Typography>
 
-export const Head = () => <title>Home Page</title>
+        <Grid
+          container
+          spacing={2}
+          className={classes.categories}
+          sx={{
+            flexDirection: { xs: "column", md: "row" },
+            padding: "1rem",
+            justifyContent: { xs: "center" },
+          }}
+        >
+          <Grid item xs={10} sm={8} md={4} className={classes.item}>
+            <Card>
+              <CardMedia
+                sx={{
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                  display: "block",
+                  objectFit: "contain",
+                }}
+                component={"img"}
+                src="http://lanbrands.co.ke/wp-content/uploads/2022/03/Lan-Shower-Gel-group-1-300x214.png"
+                height="200px"
+              />
+              <CardContent>
+                <Typography variant="h4" gutterBottom textAlign="center">
+                  Lan Shower Gel
+                </Typography>
+                <Typography variant="body1">
+                  A blend of moisturizers and emollients. Gives a soft
+                  nourishing feel on your body. Easy to use and gives an
+                  excellent cleaning performance qui?
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={10} sm={8} md={4} className={classes.item}>
+            <Card>
+              <CardContent>
+                <CardMedia
+                  sx={{
+                    maxHeight: "100%",
+                    maxWidth: "100%",
+                    display: "block",
+                    objectFit: "contain",
+                  }}
+                  component={"img"}
+                  src="http://lanbrands.co.ke/wp-content/uploads/2022/03/Lan-Multishine-category-clear-1-300x214.png"
+                  height="200px"
+                />
+                <Typography variant="h4" gutterBottom textAlign="center">
+                  Lan Multishine
+                </Typography>
+                <Typography variant="body1">
+                  A green coloured liquid detergent for uses in housekeeping.
+                  Lathers very well in water. Safe on hands and surfaces.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={10} sm={8} md={4} className={classes.item}>
+            <Card>
+              <CardMedia
+                sx={{
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                  display: "block",
+                  objectFit: "contain",
+                }}
+                component={"img"}
+                src="http://lanbrands.co.ke/wp-content/uploads/2022/03/Lan-Hand-Cream-500205-Raspberry-2-300x214.png"
+                height="180px"
+              />
+
+              <CardContent>
+                <Typography variant="h4" gutterBottom textAlign="center">
+                  Lan Handwash
+                </Typography>
+                <Typography variant="body1">
+                  Formulated with moisturizers and high-end emollients to give a
+                  soft nourishing feel. Protects, kills germs and disease
+                  causing bacteria and viruses. Easy to use and gives an
+                  excellent cleaning performance.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* imageSlider/Carousel */}
+
+      <Box className={classes.slider}>
+        <div className={classes.slideroverlay}></div>
+        <Slide className={classes.carousel}>
+          {images.map((image) => {
+            return (
+              <Box className={classes.carouselitem} spacing={1} key={image.id}>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{ color: "magenta", fontWeight: 400 }}
+                  >
+                    {image.chain}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h6" sx={{ color: "white" }}>
+                    {image.description}
+                  </Typography>
+                </Box>
+              </Box>
+            );
+          })}
+        </Slide>
+      </Box>
+    </ThemeProvider>
+    // </Layout>
+  );
+};
+export default Homepage;

@@ -1,7 +1,22 @@
 module.exports = {
   siteMetadata: {
     title: `Agatsby Project`,
-    siteUrl: `https://www.yourdomain.tld`
+    
   },
-  plugins: ["gatsby-plugin-emotion"]
+  plugins: [
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-layout",
+    "gatsby-transformer-json",
+    {
+      resolve:"gatsby-source-filesystem",
+      options:{
+        name:"data",
+        path:`${__dirname}/src/data`
+      }
+    },
+    
+  ]
 };
