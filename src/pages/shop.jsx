@@ -69,7 +69,7 @@ const Shop = ({ data }) => {
   return (
     <ThemeProvider theme={theme}>
       {/* <Layout> */}
-      <Container fullWidth sx={{ marginTop: theme.spacing(15) }}>
+      <Container  sx={{ marginTop: theme.spacing(15) }}>
         <Grid container spacing={2} sx={{ marginBlock: "1rem" }}>
           {data.allDbJson.nodes.map((product) => {
             const image = getImage(product.url.childImageSharp);
@@ -93,6 +93,7 @@ const Shop = ({ data }) => {
                           objectFit="contain"
                           objectPosition="50% 50%"
                           image={image}
+                          alt="product"
                         />
                       </CardMedia>
                     </Link>

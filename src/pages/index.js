@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     background:
-      "url(http://lanbrands.co.ke/wp-content/uploads/2022/03/cropped-Lan-Catalogue-best.png)",
+      "url(https://lanbrands.co.ke/wp-content/uploads/2022/03/cropped-Lan-Catalogue-best.png)",
 
     backgroundPosition: "center",
     display: "flex",

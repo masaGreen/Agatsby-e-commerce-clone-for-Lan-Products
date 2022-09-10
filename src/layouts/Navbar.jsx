@@ -140,6 +140,7 @@ const Navbar = () => {
               </Button>
             </Link>
           </Box>
+          
           <IconButton
             sx={{
               [theme.breakpoints.up("md")]: {
@@ -154,6 +155,7 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
+          
         </Toolbar>
         <MenuDrawer />
       </AppBar>

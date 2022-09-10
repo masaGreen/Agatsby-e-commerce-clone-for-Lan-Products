@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     background: "rgb(241, 241, 241)",
   },
   others: {
-    height: "80vh",
+    
   },
 
   link: {
