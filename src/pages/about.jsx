@@ -9,9 +9,7 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({});
 
 const useStyles = makeStyles((theme) => ({
-  main: {
-    marginTop: "",
-  },
+ 
   section: {
     background:
       "url(https://lanbrands.co.ke/wp-content/themes/busicare/assets/images/blog/breadcrum.jpg)",
@@ -49,7 +47,7 @@ const About = () => {
   return (
     <ThemeProvider theme={theme}>
       {/* <Layout> */}
-        <Box className={classes.main} sx={{ marginTop: theme.spacing(6) }}>
+        <Box  >
           <section className={classes.section}>
             <div className={classes.overlay}></div>
 

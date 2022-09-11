@@ -26,6 +26,28 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
+  main: {
+    color: "#333300",
+    fontSize:"1.2em"
+  },
+  section: {
+    background:
+      "url(https://lanbrands.co.ke/wp-content/themes/busicare/assets/images/blog/breadcrum.jpg)",
+    height: "40vh",
+    position: "relative",
+  },
+  overlay1: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    background: "rgba(0,0,0,0.6)",
+  },
+  separate: {
+    height: "4vh",
+    backgroundRepeat: "repeat",
+    background:
+      "url(https://lanbrands.co.ke/wp-content/themes/busicare/assets/images/blog/page-shadow.png)",
+  },
 }));
 
 const Shop = ({ data }) => {
@@ -69,7 +91,34 @@ const Shop = ({ data }) => {
   return (
     <ThemeProvider theme={theme}>
       {/* <Layout> */}
-      <Container  sx={{ marginTop: theme.spacing(15) }}>
+      
+        <Box className={classes.main} >
+          <section className={classes.section}>
+            <div className={classes.overlay1}></div>
+            <Box
+              sx={{
+                color: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                position: "relative",
+                height: "100%",
+              }}
+            >
+               <Link to="/" style={{ textDecoration: "none" }}>
+                  <Typography
+                    sx={{ color: "whitesmoke", "&:hover": { color: "purple" } }}
+                    variant="h4"
+                  >
+                    Home
+                  </Typography>
+                </Link>
+            </Box>
+          </section>
+          </Box>
+          <div className={classes.separate}></div>
+        <Container  >
         <Grid container spacing={2} sx={{ marginBlock: "1rem" }}>
           {data.allDbJson.nodes.map((product) => {
             const image = getImage(product.url.childImageSharp);
@@ -83,13 +132,14 @@ const Shop = ({ data }) => {
                 sx={{ marginInline: { xs: "auto" } }}
                 key={product.id}
               >
-                <Card sx={{ height: "450px", position: "relative" }}>
+                <Card sx={{ height: "450px", position: "relative"}}>
                   <CardActionArea sx={{ height: "80%" }}>
                     <Link to={`/shop/${product.name}`}>
                       <CardMedia
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
                         <GatsbyImage
+                          
                           objectFit="contain"
                           objectPosition="50% 50%"
                           image={image}

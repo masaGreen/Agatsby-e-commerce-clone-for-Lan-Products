@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
   return (
     <Box>
       <Navbar />
-      <Box sx={{ margin: "5px 0 0" }}>
+      <Box >
         <div className={classes.toolbar}></div>
         <div>{children}</div>
       </Box>

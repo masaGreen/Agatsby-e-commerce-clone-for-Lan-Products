@@ -15,8 +15,14 @@ import { makeStyles, ThemeProvider } from "@mui/styles";
 import MenuDrawer from "./Drawercomp";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { createTheme } from "@mui/material/styles";
+import {styled} from "@mui/material"
 
 export const theme = createTheme({});
+
+const MyappBar = styled(AppBar)({     
+   position:"static",
+   height:"100%"
+})
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -65,10 +71,8 @@ const Navbar = () => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <AppBar
-        className={classes.appbar}
+      <MyappBar
         elevation={0}
-        sx={{ height: theme.spacing(15) }}
       >
         <Toolbar className={classes.toolbar}>
           <Link to ="/" className={classes.link}
@@ -158,7 +162,7 @@ const Navbar = () => {
           
         </Toolbar>
         <MenuDrawer />
-      </AppBar>
+      </MyappBar>
     </ThemeProvider>
   );
 };

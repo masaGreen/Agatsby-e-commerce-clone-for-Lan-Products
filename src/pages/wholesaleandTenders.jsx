@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem",
   },
 }));
-console.log(useStyles);
+
 
 const WholesaleTender = () => {
   const classes = useStyles();
@@ -62,7 +62,7 @@ const WholesaleTender = () => {
   return (
     <ThemeProvider theme={theme}>
       {/* <Layout> */}
-        <Box className={classes.main} sx={{ marginTop: theme.spacing(6) }}>
+        <Box className={classes.main} >
           <section className={classes.section}>
             <div className={classes.overlay}></div>
 

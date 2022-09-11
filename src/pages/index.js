@@ -11,17 +11,36 @@ import Grid from "@mui/material/Grid";
 import { CardMedia } from "@mui/material";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
-
+import {styled} from "@mui/material"
 import { ThemeProvider } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
 const theme = createTheme({});
 
+
+const HeroImage = styled(Box)({
+  height:"80vh",background:
+  "url(https://lanbrands.co.ke/wp-content/uploads/2022/03/cropped-Lan-Catalogue-best.png)",
+    backgroundPosition: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignContent: "space-around",
+    color: "white",
+    width: "100%",
+    
+    fontWeight: 300,
+})
 const useStyles = makeStyles((theme) => ({
+  box: {
+    
+
+    
+  },
   main: {
-    margin: "50px 0 0 0 ",
+    
     position: "relative",
     background: "rgb(241, 241, 241)",
-    paddingTop: "14vh",
+    height:"80vh"
   },
   slideroverlay: {
     background: "rgba(0, 0, 0, 0.7)",
@@ -43,20 +62,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "80vh",
   },
-  box: {
-    background:
-      "url(https://lanbrands.co.ke/wp-content/uploads/2022/03/cropped-Lan-Catalogue-best.png)",
-
-    backgroundPosition: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignContent: "space-around",
-    color: "white",
-    width: "100%",
-    height: "100%",
-    fontWeight: 300,
-  },
+ 
   linkage: {
     textDecoration: "none",
     color: "white",
@@ -121,7 +127,7 @@ const Homepage = () => {
       {/* image header */}
       <Box className={classes.main}>
         <div className={classes.overlay}></div>
-        <Box className={classes.box} sx={{ height: "80vh" }}>
+        <HeroImage >
           <Button>
             <Typography variant="h6" sx={{ color: "white", zIndex: 10 }}>
               Lan Brands - By Alanic
@@ -176,7 +182,7 @@ const Homepage = () => {
               </Button>
             </Link>
           </Box>
-        </Box>
+        </HeroImage>
       </Box>
 
       {/* categories */}
