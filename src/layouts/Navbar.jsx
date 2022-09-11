@@ -21,8 +21,9 @@ export const theme = createTheme({});
 
 const MyappBar = styled(AppBar)({     
    position:"static",
-   height:"100%"
+   
 })
+
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     background: "rgb(241, 241, 241)",
     height: "100%",
+    position:"relative"
   },
   mainbox: {
     flexGrow: 1,
@@ -78,11 +80,7 @@ const Navbar = () => {
           <Link to ="/" className={classes.link}
               activeStyle={{ color: "#ff33cc" }} >
             <Box
-              sx={{
-                [theme.breakpoints.down("md")]: {
-                  flexGrow: 1,
-                },
-              }}
+              
             >
               <Typography variant="h3" fontWeight="1000" sx={{textDecoration:"none", color:"Gray", fontWeight:"500"}}>
                 Lan Brands
@@ -93,9 +91,7 @@ const Navbar = () => {
           <Box
             className={classes.mainbox}
             sx={{
-              [theme.breakpoints.down("md")]: {
-                display: "none",
-              },
+              display:{xs:"none",sm:"none", md:"flex"}
             }}
           >
             <Link
@@ -147,9 +143,10 @@ const Navbar = () => {
           
           <IconButton
             sx={{
-              [theme.breakpoints.up("md")]: {
-                display: "none",
-              },
+              // [theme.breakpoints.up("md")]: {
+              //   display: "none",
+              // },
+              display:{md:"none", sm:"flex", xs:"flex",position:"absolute",right:0},
               "& hover": {
                 background: "yellow",
               },
